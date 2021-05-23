@@ -45,9 +45,20 @@
       </section>
       <section class="card">
         <div class="image-container">
-          <img src="./images/sydney-singleton.jpg" alt="sydney-singleton"/>
-          <h4>Sydney Singleton</h4>
-          <h5>Laboratory Technician, Hall Analytical</h5>
+          <div class="slideshow-container">
+            <div class="mySlides1 fade">
+              <img src="./images/sydney-singleton.jpg" alt="sydney-singleton"/>
+              <h4>Sydney Singleton</h4>
+              <h5>Laboratory Technician, Hall Analytical</h5>
+            </div>
+            <div class="mySlides1 fade">
+              <img src="./images/robin-lea.jpg" alt="robin-leaS"/>
+              <h4>Robin Lean</h4>
+              <h5>Senior Lab Technician, Hall Analytical</h5>
+            </div>
+            <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
+          </div>
         </div>
         <div class="info-container">
           <h2>The life of an ENDS sample</h2>
@@ -71,9 +82,20 @@
       </section>
       <section class="card">
         <div class="image-container">
-          <img src="./images/vivienne-tedesco-ciavarra.png" alt="vivienne-tedesco-ciavarra"/>
-          <h4>Vivienne Tedesco-Ciavarra</h4>
-          <h5>Regulatory Services Manager, Synchrogenix, a Certara company</h5>
+          <div class="slideshow-container">
+            <div class="mySlides2 fade">
+              <img src="./images/vivienne-tedesco-ciavarra.png" alt="vivienne-tedesco-ciavarra"/>
+              <h4>Vivienne Tedesco-Ciavarra</h4>
+              <h5>Regulatory Services Manager, Synchrogenix, a Certara company</h5>
+            </div>
+            <div class="mySlides2 fade">
+              <img src="./images/evan-richardson.png" alt="evan-richardson"/>
+              <h4>Evan Richardson</h4>
+              <h5>Director, Regulatory Services, Synchrogenix, a Certara company</h5>
+            </div>
+            <a class="prev" onclick="plusSlides(-1, 1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1, 1)">&#10095;</a>
+          </div>
         </div>
         <div class="info-container">
           <h2>How to get your PMTA right the first time (and what to do if you didn’t)</h2>
@@ -83,5 +105,49 @@
         </div>
       </section>
     </div>
+    <script>
+      var slideIndex = [1, 1];
+      var autoIndex = 1;
+      var slideId = ["mySlides1", "mySlides2"]
+      // changeSlides(1, 0);
+      // changeSlides(1, 1);
+      showSlides();
+
+      function plusSlides(n, no) {
+        changeSlides(slideIndex[no] += n, no);
+      }
+
+      function changeSlides(n, no) {
+        var i;
+        var x = document.getElementsByClassName(slideId[no]);
+        if (n > x.length) {
+          slideIndex[no] = 1
+        }
+        if (n < 1) {
+          slideIndex[no] = x.length;
+        }
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+        }
+        x[slideIndex[no]-1].style.display = "block";
+      }
+
+      function showSlides() {
+        var i;
+        var slides1 = document.getElementsByClassName("mySlides1");
+        var slides2 = document.getElementsByClassName("mySlides2");
+        for (i = 0; i < slides1.length; i++) {
+          slides1[i].style.display = "none";
+          slides2[i].style.display = "none";
+        }
+        autoIndex++;
+        if (autoIndex > slides1.length) {
+          autoIndex = 1
+        }
+        slides1[autoIndex-1].style.display = "block";
+        slides2[autoIndex-1].style.display = "block";
+        setTimeout(showSlides, 4000);
+      }
+    </script>
   </body>
 </html>
